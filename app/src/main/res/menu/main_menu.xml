@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_settings"
+        android:title="Settings"
+        android:icon="@drawable/ic_settings"
+         />
+    <item
+        android:id="@+id/action_rewards"
+        android:title="Rewards"
+        android:icon="@drawable/ic_rewards"
+         />
+    <item
+        android:id="@+id/action_logout"
+        android:title="Logout"
+        android:icon="@drawable/ic_logout"
+         />
+
+    <item
+        android:id="@+id/action_add_expense"
+        android:title="Add Expense"
+         />
+
+    <item
+        android:id="@+id/action_expense_list"
+        android:title="Expense List"
+         />
+
+</menu>

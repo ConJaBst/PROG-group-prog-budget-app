@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Budget25</string>
+
+    <!-- Error Messages -->
+    <string name="invalid_user_message">Invalid user. Please log in again.</string>
+    <string name="settings_clicked">Settings clicked</string>
+    <string name="rewards_clicked">Rewards clicked</string>
+    <string name="set_budget_message">You have not set a budget yet. Set your budget to start tracking.</string>
+    <string name="budget_summary">You\'ve spent R%.2f of your R%.2f budget. Remaining: R%.2f</string>
+
+    <string name="invalid_budget_message">Please enter a valid budget amount.</string>
+
+    <!-- Dialog Messages -->
+    <string name="set_monthly_budget">Set Monthly Budget</string>
+    <string name="enter_amount_hint">Enter amount (e.g., 5000)</string>
+
+    <!-- Buttons -->
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+</resources>
