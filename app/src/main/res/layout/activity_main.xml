@@ -33,6 +33,7 @@
         android:layout_width="381dp"
         android:layout_height="212dp"
         android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="26dp"
         android:layout_marginBottom="47dp"
         android:ems="10"
@@ -42,7 +43,8 @@
         app:layout_constraintBottom_toTopOf="@+id/btnSaveExpense"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <TextView
         android:id="@+id/tvAmount"
@@ -81,6 +83,7 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -100,13 +103,15 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="328dp"
         android:layout_marginBottom="24dp"
-        android:text="Catagory"
+        android:text="Category"
         android:textColor="#0F0E0E"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/editTextText"
@@ -115,10 +120,10 @@
         android:layout_marginStart="11dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="111dp"
+        android:clickable="true"
+        android:focusable="false"
         android:hint="yyyy-mm-dd"
         android:inputType="none"
-        android:focusable="false"
-        android:clickable="true"
         android:minHeight="48dp"
         android:paddingHorizontal="16dp"
         android:paddingVertical="12dp"
@@ -130,15 +135,30 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="98dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="291dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView3" />
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/btnAddCategory"
+        android:layout_width="162dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="64dp"
+        android:text="Add Category"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnSaveExpense"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.app.Activity
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -9,8 +10,8 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.databinding.ActivityExpenseListBinding
 import com.example.myapplication.viewmodel.ExpenseViewModel
@@ -29,6 +30,7 @@ class ExpenseListActivity : AppCompatActivity() {
 
     private lateinit var addExpenseLauncher: ActivityResultLauncher<Intent>
 
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityExpenseListBinding.inflate(layoutInflater)
@@ -49,24 +51,24 @@ class ExpenseListActivity : AppCompatActivity() {
         }
 
         // Gets the expenses from the view model
-        expenseViewModel.expenses.observe(this, Observer { expenseList ->
+        expenseViewModel.expenses.observe(this) { expenseList ->
             currentExpenseList = expenseList
             expenseAdapter.submitList(currentExpenseList)
-        })
+        }
         expenseViewModel.loadExpenses(userId)
 
-        // Adds a new expense from the add expense activity (if needed)
         addExpenseLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val data = result.data
                 data?.let {
-                    val newExpense = it.getParcelableExtra<Expense>("NEW_EXPENSE")
+                    val newExpense = it.getParcelableExtra("NEW_EXPENSE", Expense::class.java)
                     newExpense?.let { expense ->
                         expenseViewModel.addExpense(expense, userId)
                     }
                 }
             }
         }
+
 
         // back button
         binding.toolBarHome.setNavigationOnClickListener {

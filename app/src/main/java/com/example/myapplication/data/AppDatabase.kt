@@ -6,13 +6,16 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import androidx.room.TypeConverters
 
 
-@Database(entities = [Expense::class, User::class], version = 3)
+@Database(
+    entities = [Expense::class, User::class, Category::class],
+    version = 4
+)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun expenseDao(): ExpenseDao
     abstract fun userDao(): UserDao
+    abstract fun categoryDao(): CategoryDao
 
     companion object {
         @Volatile private var INSTANCE: AppDatabase? = null
@@ -24,7 +27,7 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "budget_db"
                 )
-                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
+                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
                     .build()
                 INSTANCE = instance
                 instance
@@ -38,16 +41,11 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
-        // Migration from version 2 to 3: Add userId to expenses table + Create User table
+        // Migration from version 2 to 3: Add userId column and create users table
         private val MIGRATION_2_3 = object : Migration(2, 3) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                // Add userId to expenses table (nullable for now)
                 database.execSQL("ALTER TABLE expenses ADD COLUMN userId INTEGER")
-
-                // Update the existing records to set a default value for userId
                 database.execSQL("UPDATE expenses SET userId = 0 WHERE userId IS NULL")
-
-                // Create users table
                 database.execSQL("""
                     CREATE TABLE IF NOT EXISTS users (
                         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -57,7 +55,18 @@ abstract class AppDatabase : RoomDatabase() {
                 """.trimIndent())
             }
         }
+
+        // Migration from version 3 to 4: Create categories table
+        private val MIGRATION_3_4 = object : Migration(3, 4) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("""
+                    CREATE TABLE IF NOT EXISTS categories (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                        name TEXT NOT NULL,
+                        userId INTEGER NOT NULL
+                    )
+                """.trimIndent())
+            }
+        }
     }
 }
-
-
