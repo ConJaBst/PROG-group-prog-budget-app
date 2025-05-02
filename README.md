@@ -11,7 +11,7 @@ This is a budget tracking app we built using Kotlin. It helps you manage your in
 
 ## Links
 - Group contract: [here](https://advtechonline-my.sharepoint.com/:f:/g/personal/st10290665_vcconnect_edu_za/Er56UZVR3T5JoaxG_im3RmYBLe_kxDIpq4gOx4Md8xjftA?e=vcjx5e)
-- Video: 
+- Video: [here](https://youtu.be/QXpSvCI-vp4)
 
 ## How to run in Android Studio
 - Clone the repository in the new project page.
