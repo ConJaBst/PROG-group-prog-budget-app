@@ -5,12 +5,12 @@ This is a budget tracking app we built using Kotlin. It helps you manage your in
 
 
 ## Contributors
-- Connor
-- Hlogi
-- Sam
+- Connor Bell St10290665
+- Lehlogonolo makwela ST10290044
+- Samuel Ntumba St10299236
 
 ## Links
-- Group contract:
+- Group contract: (here)[https://advtechonline-my.sharepoint.com/:f:/g/personal/st10290665_vcconnect_edu_za/Er56UZVR3T5JoaxG_im3RmYBLe_kxDIpq4gOx4Md8xjftA?e=vcjx5e]
 - Video: 
 
 ## How to run in Android Studio
