@@ -16,6 +16,7 @@ data class Expense(
     val date: String,
     val category: String,
     val notes: String? = null,
-    val userId: Int
+    val userId: Int,
+    val imageUri: String? = null
 ) : Parcelable
 

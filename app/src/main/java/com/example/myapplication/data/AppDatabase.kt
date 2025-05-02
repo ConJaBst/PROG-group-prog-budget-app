@@ -10,7 +10,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(
     entities = [Expense::class, User::class, Category::class],
-    version = 4
+    version = 5
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun expenseDao(): ExpenseDao
@@ -27,7 +27,7 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "budget_db"
                 )
-                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
+                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
                     .build()
                 INSTANCE = instance
                 instance
@@ -66,6 +66,14 @@ abstract class AppDatabase : RoomDatabase() {
                         userId INTEGER NOT NULL
                     )
                 """.trimIndent())
+            }
+        }
+
+        // Migration from version 4 to 5:
+        val MIGRATION_4_5 = object : Migration(4, 5) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                // Add the new column to the existing expenses table
+                database.execSQL("ALTER TABLE expenses ADD COLUMN imageUri TEXT")
             }
         }
     }
